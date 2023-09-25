@@ -7,3 +7,8 @@ build/
 
 
 .idea/
+
+
+# db data
+sns-mysql/
+sns-mysql-conf/
