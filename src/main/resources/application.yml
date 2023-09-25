@@ -1,13 +1,13 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:until;NON_KEYWORDS=USER,ORDER
-    username: tester
-    password: qwer!@#$
-    driverClassName: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sns
+    username: root
+    password: chlqus310@
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database: mysql
     hibernate:
       ddl-auto: create-drop
-  h2:
-    console:
-      enabled: true
+    properties:
+      hibernate:
+        show_sql: true
