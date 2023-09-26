@@ -4,13 +4,13 @@ import com.youngjun.sns.user.entity.User;
 import lombok.Getter;
 
 @Getter
-public class GetUserResponse {
+public class UserResponse {
     private Long id;
     private String email;
     private String phoneNumber;
     private Long age;
 
-    public GetUserResponse(User user){
+    public UserResponse(User user){
         this.id = user.getId();
         this.age = user.getAge();
         this.email = user.getEmail();

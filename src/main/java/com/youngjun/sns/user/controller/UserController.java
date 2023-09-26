@@ -1,6 +1,7 @@
 package com.youngjun.sns.user.controller;
 
-import com.youngjun.sns.user.dto.response.GetUserResponse;
+import com.youngjun.sns.user.dto.request.CreateUserRequest;
+import com.youngjun.sns.user.dto.response.UserResponse;
 import com.youngjun.sns.user.entity.User;
 import com.youngjun.sns.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,13 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetUserResponse> getUser(@PathVariable Long id){
+    public ResponseEntity<UserResponse> getUser(@PathVariable Long id){
         User user = userService.getUserById(id);
-        return ResponseEntity.ok(new GetUserResponse(user));
+        return ResponseEntity.ok(new UserResponse(user));
+    }
+    @PostMapping("")
+    public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserRequest createUserRequest){
+        User user = userService.createUser(createUserRequest);
+        return ResponseEntity.ok(new UserResponse(user));
     }
 }
