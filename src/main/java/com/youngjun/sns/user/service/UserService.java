@@ -33,6 +33,11 @@ public class UserService {
         user.updateUser(updateUserRequest);
         return userRepository.save(user);
     }
+
+    public void deleteUser(Long id){
+        User user = this.getUserById(id);
+        userRepository.delete(user);
+    }
 }
 
 
