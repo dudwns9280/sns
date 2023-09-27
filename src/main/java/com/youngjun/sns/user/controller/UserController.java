@@ -1,6 +1,7 @@
 package com.youngjun.sns.user.controller;
 
 import com.youngjun.sns.user.dto.request.CreateUserRequest;
+import com.youngjun.sns.user.dto.request.UpdateUserRequest;
 import com.youngjun.sns.user.dto.response.UserResponse;
 import com.youngjun.sns.user.entity.User;
 import com.youngjun.sns.user.service.UserService;
@@ -25,6 +26,11 @@ public class UserController {
     @PostMapping("")
     public ResponseEntity<UserResponse> createUser(@RequestBody @Validated CreateUserRequest createUserRequest){
         User user = userService.createUser(createUserRequest);
+        return ResponseEntity.ok(new UserResponse(user));
+    }
+    @PatchMapping("/{id}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody @Validated UpdateUserRequest updateUserRequest){
+        User user = userService.updateUser(id, updateUserRequest);
         return ResponseEntity.ok(new UserResponse(user));
     }
 }

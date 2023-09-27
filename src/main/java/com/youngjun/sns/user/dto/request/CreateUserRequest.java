@@ -11,8 +11,6 @@ public record CreateUserRequest(
         String password,
         @Pattern(regexp = "\\d{3}-((\\d{4})|(\\d{3}))-\\d{4}", message = "전화번호를 올바른 형식으로 입력해주세요. (-포함)")
         String phoneNumber,
-        @Min(1)
         @Max(100)
-        Long age
-){
+        int age){
 }

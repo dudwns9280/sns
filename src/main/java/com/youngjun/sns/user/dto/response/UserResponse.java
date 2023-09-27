@@ -8,7 +8,7 @@ public class UserResponse {
     private Long id;
     private String email;
     private String phoneNumber;
-    private Long age;
+    private int age;
 
     public UserResponse(User user){
         this.id = user.getId();
