@@ -1,6 +1,6 @@
 package com.youngjun.sns.user.entity;
 
-import com.youngjun.sns.user.dto.request.UpdateUserRequest;
+import com.youngjun.sns.user.dto.request.UpdateUserInfoRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,18 +21,15 @@ public class User {
     private String phoneNumber;
     private int age;
 
-    public void updateUser(UpdateUserRequest updateUserRequest){
-        if(updateUserRequest.email() != null){
-            this.email = updateUserRequest.email();
+    public void updateUserInfo(UpdateUserInfoRequest updateUserInfoRequest){
+        if(updateUserInfoRequest.email() != null){
+            this.email = updateUserInfoRequest.email();
         }
-        if(updateUserRequest.password() != null){
-            this.password = updateUserRequest.password();
+        if(updateUserInfoRequest.age() != null){
+            this.age = updateUserInfoRequest.age().intValue();
         }
-        if(updateUserRequest.age() != null){
-            this.age = updateUserRequest.age().intValue();
-        }
-        if(updateUserRequest.phoneNumber() != null){
-            this.phoneNumber = updateUserRequest.phoneNumber();
+        if(updateUserInfoRequest.phoneNumber() != null){
+            this.phoneNumber = updateUserInfoRequest.phoneNumber();
         }
     }
 }

@@ -1,7 +1,8 @@
 package com.youngjun.sns.user.controller;
 
 import com.youngjun.sns.user.dto.request.CreateUserRequest;
-import com.youngjun.sns.user.dto.request.UpdateUserRequest;
+import com.youngjun.sns.user.dto.request.UpdatePasswordRequest;
+import com.youngjun.sns.user.dto.request.UpdateUserInfoRequest;
 import com.youngjun.sns.user.dto.response.UserResponse;
 import com.youngjun.sns.user.entity.User;
 import com.youngjun.sns.user.service.UserService;
@@ -29,8 +30,14 @@ public class UserController {
         return ResponseEntity.ok(new UserResponse(user));
     }
     @PatchMapping("/{id}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody @Validated UpdateUserRequest updateUserRequest){
-        User user = userService.updateUser(id, updateUserRequest);
+    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody @Validated UpdateUserInfoRequest updateUserInfoRequest){
+        User user = userService.updateUserInfo(id, updateUserInfoRequest);
+        return ResponseEntity.ok(new UserResponse(user));
+    }
+
+    @PatchMapping("/password")
+    public ResponseEntity<UserResponse> updatePassword(@RequestBody @Validated UpdatePasswordRequest updatePasswordRequest){
+        User user = userService.updatePassword(updatePasswordRequest);
         return ResponseEntity.ok(new UserResponse(user));
     }
 
