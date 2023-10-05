@@ -1,8 +1,7 @@
 package com.youngjun.sns.user.dto.request;
 
-public record UpdateUserRequest(
+public record UpdateUserInfoRequest(
         String email,
-        String password,
         String phoneNumber,
         Integer age) {
 
